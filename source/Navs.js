@@ -65,7 +65,7 @@ enyo.kind({
     }else{
       this.setActive(false);
     }
-
+    return true;
   }
 });
 
@@ -76,12 +76,13 @@ enyo.kind({
 		href: 'javascript:;',
 	},
   handlers: {
-    ontap: "navItemClicked"
+    onclick: "navItemClicked"
   },
   events: {
     onNavItemClicked: ""
   },
-  navItemClicked: function() {
+  navItemClicked: function(inSender, inEvent) {
+    inEvent.preventDefault(); //prevent adding of href to url
     this.doNavItemClicked();
   }
 });
