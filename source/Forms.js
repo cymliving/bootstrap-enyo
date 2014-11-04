@@ -39,43 +39,8 @@ enyo.kind({
 
 enyo.kind({
 	name: "bootstrap.FormControl",
-	classes: "form-control",
-	tag: 'input',
-	attributes: {
-		type: "text",
-    placeholder: "",
-    value: "",
-	},
-	published: {
-		type: "text",
-	},
-  create: function() {
-		this.inherited(arguments);
-    this.setupPlaceholder();
-    this.valueChanged();
-  },
-  setupPlaceholder: function() {
-		if (this.placeholder) {
-      this.attributes.placeholder = this.placeholder;
-		}
-  },
-  valueChanged: function() {
-		var node = this.hasNode(),
-			attrs = this.attributes;
-		if (node) {
-			if (node.value !== this.value) {
-				node.value = this.value;
-			}
-			// we manually update the cached value so that the next time the
-			// attribute is requested or the control is re-rendered it will
-			// have the correct value - this is because calling setAttribute()
-			// in some cases does not receive an appropriate response from the
-			// browser
-			attrs.value = this.value;
-		} else {
-			this.setAttribute("value", this.value);
-		}
-  }
+  kind: "enyo.Input",
+	classes: "form-control"
 });
 
 enyo.kind({
