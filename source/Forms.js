@@ -38,9 +38,38 @@ enyo.kind({
 });
 
 enyo.kind({
-	name: "bootstrap.FormControl",
+	name: "bootstrap.TextInput",
   kind: "enyo.Input",
 	classes: "form-control"
+});
+
+enyo.kind({
+	name: "bootstrap.SelectInput",
+  kind: "enyo.Select",
+	classes: "form-control",
+  published: {
+    active: ''
+  },
+  handlers: {
+    onchange: 'updateActive'
+  },
+  bindings: [
+    {from: '.active', to: '.selected', transform: function(val) {
+      var selected = -1,
+          value = val+'';
+
+        enyo.forEach(this.children, function(option, idx) {
+            if ((option.value+'') === value) {
+                selected = idx;
+                }
+            });
+
+      return selected;
+    }}
+  ],
+  updateActive: function() {
+    this.set('active', this.getValue());
+  }
 });
 
 enyo.kind({
