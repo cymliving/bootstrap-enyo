@@ -119,3 +119,25 @@ enyo.kind({
 		this.inherited(arguments);
 	},
 })
+
+enyo.kind({
+  name: "bootstrap.FormSectionHeader",
+  classes: "form-section-header",
+  tag: "p",
+  published: {
+    type: "default",// form-section-header-default || form-section-header-primary || form-section-header-success || form-section-header-info || form-section-header-warning || form-section-header-danger || form-section-header-link,
+    size: false
+  },
+  create: function() {
+		this.inherited(arguments);
+		this.setupClasses();
+	},
+	setupClasses: function(){
+		if(this.type){
+		   this.addClass("form-section-header-" + this.type);
+		}
+    if(this.size) {
+      this.addClass("col-md-" + this.size);
+    }
+	}
+})
