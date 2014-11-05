@@ -59,15 +59,16 @@ enyo.kind({
           value = val+'';
 
         enyo.forEach(this.children, function(option, idx) {
-            if ((option.value+'') === value) {
-                selected = idx;
-                }
-            });
-
+          if ((option.value+'') === value) {
+            selected = idx;
+          }
+        });
+      console.log(selected);
       return selected;
     }}
   ],
   updateActive: function() {
+    console.log('update');
     this.set('active', this.getValue());
   }
 });
