@@ -58,18 +58,34 @@ enyo.kind({
       var selected = -1,
           value = val+'';
 
-        enyo.forEach(this.children, function(option, idx) {
-          if ((option.value+'') === value) {
-            selected = idx;
-          }
-        });
-      console.log(selected);
+      enyo.forEach(this.getOptions(), function(option, idx) {
+        if ((option.value+'') === value) {
+          selected = idx;
+        }
+      });
+
       return selected;
     }}
   ],
   updateActive: function() {
-    console.log('update');
     this.set('active', this.getValue());
+  },
+  getOptions: function() {
+    var options = [];
+    
+    function pushOptions(children){
+      enyo.forEach(children, function(child) {
+        if(child.kind == "enyo.Option"){
+          options.push(child);
+        } else if(child.children.length) {
+          pushOptions(child.children);
+        }
+      });
+    }
+
+    pushOptions(this.children);
+    
+    return options;
   }
 });
 
