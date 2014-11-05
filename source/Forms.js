@@ -13,15 +13,15 @@ enyo.kind({
 		if (this.inline) {
 			this.addClass("form-inline");
 		} else if (this.horizontal) {
-			this.addClass("form-horizontal")
+			this.addClass("form-horizontal");
 		}
 	}
 });
 
 enyo.kind({
 	name: "bootstrap.FormGroup",
-	classes: "form-group",
-})
+	classes: "form-group"
+});
 
 enyo.kind({
 	name: "bootstrap.FormControlLabel",
@@ -35,7 +35,7 @@ enyo.kind({
 			this.addClass("sr-only");
 		}
 	}
-})
+});
 
 enyo.kind({
 	name: "bootstrap.FormControl",
