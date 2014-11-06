@@ -91,20 +91,8 @@ enyo.kind({
 
 enyo.kind({
 	name: "bootstrap.TextArea",
-	tag: "textarea",
-	classes: "form-control",
-	attributes: {
-		rows: "3",
-	},
-	published: {
-		rows: "3",
-	},
-	create: function(){
-		this.inherited(arguments);
-		if (this.rows !== "3") {
-			this.attributes.rows = this.rows;
-		}
-	}
+  kind: "enyo.TextArea",
+	classes: "form-control"
 })
 
 enyo.kind({
