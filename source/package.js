@@ -1,6 +1,6 @@
 enyo.depends(
 	'utility.js',
-
+  'blocker.js',
 	'Alert.js',
 	'Breadcrumbs.js',
 	'Button.js',
