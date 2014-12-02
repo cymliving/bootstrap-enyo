@@ -42,6 +42,7 @@ enyo.kind({
 	},
 	isShown: false,
 	hiding: false,
+  remove: false,
 	handleKeyUp: function(inSender, inEvent){
 		if(this.isShown && this.keyboard && inEvent.keyCode == 27) { // escape
 			this.hide();
@@ -78,6 +79,9 @@ enyo.kind({
 				this.hiding = false;
 				this.removeClass("out");
 				this.setAttribute("style", false);
+        if(this.remove){
+          this.destroy();
+        }
 			}
 		}
 	}
