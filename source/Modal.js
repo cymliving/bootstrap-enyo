@@ -21,8 +21,8 @@ enyo.kind({
 	components: [
 		{kind: "bootstrap.ModalDialog", components: [
 			{kind: "bootstrap.ModalContent", components: [
-				{ kind: "bootstrap.ModalHeader" },
-				{ kind: "bootstrap.ModalBody" },
+				{ kind: "bootstrap.ModalHeader", classes: "clearfix" },
+				{ kind: "bootstrap.ModalBody", classes: "clearfix" },
 			]}
 		]},
 	],
@@ -36,7 +36,7 @@ enyo.kind({
 			this.$.modalBody.createComponents(this.bodyComponents);
 		}
 		if (this.footerComponents) {
-			this.$.modalContent.createComponent({kind: "bootstrap.ModalFooter"});
+			this.$.modalContent.createComponent({kind: "bootstrap.ModalFooter", classes: "clearfix"});
 			this.$.modalContent.$.modalFooter.createComponents(this.footerComponents);
 		}
 	},
