@@ -9,8 +9,8 @@ enyo.kind({
 		backdrop: true,
 		keyboard: true,
 		title: "",
-		bodyComponents: [],
-		footerComponents: []
+		bodyComponents: null,
+		footerComponents: null
 	},
 	handlers: {
 		onShowModal: "show",
