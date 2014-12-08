@@ -59,7 +59,9 @@ enyo.kind({
 	},
 	fadeIn: function(){
 		this.addClass("in");
-		this.$.modalBackdrop.addClass("in");
+    if (this.backdrop) {
+		  this.$.modalBackdrop.addClass("in");
+    }
 		this.setAttribute("aria-hidden", false);
 	},
 	hide: function(){
@@ -69,7 +71,9 @@ enyo.kind({
 		this.isShown = false;
 		this.hiding = true;
 		this.removeClass("in");
-		this.$.modalBackdrop.removeClass("in");
+    if (this.backdrop) {
+		  this.$.modalBackdrop.removeClass("in");
+    }
 		this.addClass("out");
 		this.setAttribute("aria-hidden", true);
 	},
