@@ -40,7 +40,10 @@ enyo.kind({
 enyo.kind({
 	name: "bootstrap.TextInput",
   kind: "enyo.Input",
-	classes: "form-control"
+	classes: "form-control",
+  create: function(){
+    this.inherited(arguments);
+  }
 });
 
 enyo.kind({

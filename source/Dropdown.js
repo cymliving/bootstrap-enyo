@@ -23,6 +23,7 @@ bootstrap.Dropdown = {
 	classes: "dropdown",
 	handlers: {
 		onDropdownToggle: "toggleDropdown",
+		onDropdownOpen: "openDropdown",
 		onDropdownClose: "closeDropdown",
 		onDropdownUp: "upDropdown",
 		onDropdownDown: "downDropdown"
@@ -41,15 +42,19 @@ bootstrap.Dropdown = {
 		return false;
 	},
 	openDropdown: function(){
-		this.createComponent({ name: "backdrop", kind: "bootstrap.DropdownBackdrop" });
-		this.$.backdrop.render();
+    if(!this.$.backdrop) {
+		  this.createComponent({ name: "backdrop", kind: "bootstrap.DropdownBackdrop" });
+		  this.$.backdrop.render();    
+    }
 		this.addClass('open');
 		this.focus();
 		this.isOpen = true;
 	},
 	closeDropdown: function(){
 		this.removeClass('open');
-		this.$.backdrop.destroy();
+    if(this.$.backdrop) {
+		  this.$.backdrop.destroy();      
+    }
 		this.isOpen = false;
 	},
 	upDropdown: function(){

@@ -25,6 +25,5 @@ enyo.depends(
   'Collapse.js',
   'Tree.js',
   'Tabs.js',
-
 	'bootstrap.less'
 );
