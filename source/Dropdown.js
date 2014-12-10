@@ -42,7 +42,7 @@ bootstrap.Dropdown = {
 		return false;
 	},
 	openDropdown: function(){
-    if(!this.$.backdrop) {
+    if(!this.$.backdrop && this.backdrop != false) {
 		  this.createComponent({ name: "backdrop", kind: "bootstrap.DropdownBackdrop" });
 		  this.$.backdrop.render();    
     }
@@ -52,7 +52,7 @@ bootstrap.Dropdown = {
 	},
 	closeDropdown: function(){
 		this.removeClass('open');
-    if(this.$.backdrop) {
+    if(this.$.backdrop && this.backdrop != false) {
 		  this.$.backdrop.destroy();      
     }
 		this.isOpen = false;
