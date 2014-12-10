@@ -13,6 +13,9 @@ enyo.kind({
 	},
 	// ...........................
 	// PROTECTED METHODS
+  disabledChanged: function() {
+    this.disabled ? this.addClass('disabled') : this.removeClass('disabled');
+  },
 	create: function() {
 		this.inherited(arguments);
 		this.setupClasses();
