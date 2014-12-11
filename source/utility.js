@@ -124,7 +124,7 @@ bootstrap.TipPositioner = {
 
 			// set this tooltip to live on the floating layer so it can be accurately
 			// positioned anywhere on the whole window.
-			this.setParent(enyo.floatingLayer);
+			this.setParent(pCore.$.floatingLayer);
 		}
 	}),
 	isShown: false,
