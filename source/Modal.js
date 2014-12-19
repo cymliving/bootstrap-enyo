@@ -8,7 +8,7 @@ enyo.kind({
 	published: {
 		backdrop: true,
 		keyboard: true,
-		title: "",
+		title: null,
 		bodyComponents: null,
 		footerComponents: null
 	},
@@ -28,7 +28,9 @@ enyo.kind({
 	],
 	create: function(){
 		this.inherited(arguments);
-		this.$.modalHeader.$.modalTitle.content = this.title;
+    if(this.title) {
+		  this.$.modalHeader.$.modalTitle.content = this.title;
+    }
     if (this.backdrop) {
       this.createComponent({kind: "bootstrap.ModalBackdrop"});
     }
