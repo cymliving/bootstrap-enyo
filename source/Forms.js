@@ -114,11 +114,16 @@ enyo.kind({
 enyo.kind({
   name: "bootstrap.FormSectionHeader",
   classes: "form-section-header",
-  tag: "p",
   published: {
     type: "default",// form-section-header-default || form-section-header-primary || form-section-header-success || form-section-header-info || form-section-header-warning || form-section-header-danger || form-section-header-link,
     size: false
   },
+  components: [
+    { tag: "span", classes: "pull-left", name: "header"}
+  ],
+  bindings: [
+    { from: ".content", to: ".$.header.content"}
+  ],
   create: function() {
 		this.inherited(arguments);
 		this.setupClasses();
