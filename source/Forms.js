@@ -126,12 +126,17 @@ enyo.kind({
   ],
   create: function() {
 		this.inherited(arguments);
+    this.typeChanged();
 		this.setupClasses();
 	},
+  typeChanged: function () {
+    if(this.type) {
+      this.removeClass("form-section-header-" + this.oldType);
+      this.addClass("form-section-header-" + this.type);
+    }
+    this.oldType = this.type;
+  },
 	setupClasses: function(){
-		if(this.type){
-		   this.addClass("form-section-header-" + this.type);
-		}
     if(this.size) {
       this.addClass("col-md-" + this.size);
     }
