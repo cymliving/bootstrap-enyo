@@ -115,7 +115,7 @@ enyo.kind({
   name: "bootstrap.FormSectionHeader",
   classes: "form-section-header",
   published: {
-    type: "default",// form-section-header-default || form-section-header-primary || form-section-header-success || form-section-header-info || form-section-header-warning || form-section-header-danger || form-section-header-link,
+    type: "default",// default || primary || success || info || warning || danger || link,
     size: false
   },
   components: [
@@ -131,8 +131,8 @@ enyo.kind({
 	},
   typeChanged: function () {
     if(this.type) {
-      this.removeClass("form-section-header-" + this.oldType);
-      this.addClass("form-section-header-" + this.type);
+      this.removeClass(this.oldType);
+      this.addClass(this.type);
     }
     this.oldType = this.type;
   },

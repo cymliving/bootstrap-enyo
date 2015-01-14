@@ -10,25 +10,32 @@
   padding-bottom: 6px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  &.form-section-header-primary {
+  &.primary {
     background: #428bca;
     color: #ffffff;
   }
-  &.form-section-header-success {
+  &.success {
     background: #47a447;
     color: #ffffff
   }
-  &.form-section-header-info {
+  &.info {
     background: #5bc0de;
     color: #ffffff
   }
-  &.form-section-header-warning {
+  &.warning {
     background: #f0ad4e;
     color: #ffffff
   }
-  &.form-section-header-danger {
+  &.danger {
     background: #d9534f;
     color: #ffffff
+  }
+  +div {
+    .contact:first-of-type{
+      .form-section-header {
+        margin-top: -10px !important;
+      }
+    }
   }
   +.form-section-header {
     margin-top: -10px;
