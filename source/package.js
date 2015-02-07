@@ -2,6 +2,7 @@ enyo.depends(
 	'utility.js',
   'blocker.js',
 	'Alert.js',
+  'NotificationBar.js',
 	'Breadcrumbs.js',
 	'Button.js',
 	'CloseIcon.js',
@@ -25,5 +26,7 @@ enyo.depends(
   'Collapse.js',
   'Tree.js',
   'Tabs.js',
-	'bootstrap.less'
+  'SweetAlert.js',
+	'bootstrap.less',
+  'SweetAlertCombine.less'
 );
