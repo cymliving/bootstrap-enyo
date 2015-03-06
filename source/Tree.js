@@ -5,11 +5,16 @@ enyo.kind({
     ontap: "treeTap"
   },
   published: {
-    label: ""
+    label: "",
+    showTree: false
   },
   components: [
     {name: "label", tag: "label", classes: "tree-toggler nav-header"},
-    {kind: "bootstrap.Nav", showing: false, type: "list", classes: "tree", defaultKind: "bootstrap.MenuItem"}
+    {kind: "bootstrap.Nav", type: "list", classes: "tree", defaultKind: "bootstrap.MenuItem"}
+  ],
+  bindings: [
+    {from: ".label", to: ".$.lable.content"},
+    {from: ".showTree", to: ".$.nav.showing"}
   ],
   initComponents: function(inSender, inEvent){
     this.inherited(arguments);
