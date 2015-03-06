@@ -41,7 +41,7 @@ enyo.kind({
 	handlers: {
 		ontap: "doDismissAlert",
 	},
-})
+});
 
 enyo.kind({
 	name: "bootstrap.AlertLink",

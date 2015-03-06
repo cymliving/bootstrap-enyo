@@ -102,13 +102,42 @@ enyo.kind({
 	name: "bootstrap.Checkbox",
 	classes: "checkbox",
 	tag: "label",
+  published: {
+    //* Value of label span
+    label: null,
+    //* true for inline checkboxs
+    inline: false,
+	  //* Value of checkbox; true if checked    
+    checked: false
+  },
 	components: [
-		{name: "checkbox", tag: "input", type: "checkbox"},
+		{kind: "enyo.Checkbox", name: "checkbox"},
 		{name: "label", tag: "span" }
 	],
-	create: function(){
-		this.inherited(arguments);
+  rendered: enyo.inherit(function (sup) {
+		return function() {
+			sup.apply(this, arguments);
+      this.setupComponents();
+			this.checkedChanged();
+      this.setupClasses();
+		};
+	}),
+	checkedChanged: function() {
+		this.$.checkbox.setNodeProperty("checked", this.checked);
+		this.$.checkbox.setAttribute("checked", this.checked ? "checked" : "");
+		this.$.checkbox.setActive(this.checked);
 	},
+  setupClasses: function() {
+    if(this.inline) {
+      this.removeClass("checkbox");
+      this.addClass("checkbox-inline");
+    }
+  },
+  setupComponents: function() {
+    if(this.label) {
+      this.$.label.setContent(this.label);
+    }
+  }
 })
 
 enyo.kind({
