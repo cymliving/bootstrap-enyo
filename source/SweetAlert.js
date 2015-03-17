@@ -12,6 +12,7 @@
         text: '',
         type: null,
         allowOutsideClick: false,
+        showConfirmButton: true,
         showCancelButton: false,
         closeOnConfirm: true,
         closeOnCancel: true,
@@ -230,6 +231,7 @@
         params.text               = arguments[0].text || defaultParams.text;
         params.type               = arguments[0].type || defaultParams.type;
         params.allowOutsideClick  = arguments[0].allowOutsideClick || defaultParams.allowOutsideClick;
+        params.showConfirmButton  = arguments[0].showConfirmButton !== undefined ? arguments[0].showConfirmButton : defaultParams.showConfirmButton;
         params.showCancelButton   = arguments[0].showCancelButton !== undefined ? arguments[0].showCancelButton : defaultParams.showCancelButton;
         params.closeOnConfirm     = arguments[0].closeOnConfirm !== undefined ? arguments[0].closeOnConfirm : defaultParams.closeOnConfirm;
         params.closeOnCancel      = arguments[0].closeOnCancel !== undefined ? arguments[0].closeOnCancel : defaultParams.closeOnCancel;
@@ -536,6 +538,14 @@
       $customIcon.setAttribute('style', $customIcon.getAttribute('style') + 'width:' + _imgWidth + 'px; height:' + _imgHeight + 'px');
     }
 
+    // Confirm button
+    modal.setAttribute('data-has-confirm-button', params.showConfirmButton);
+    if (params.showConfirmButton) {
+      $confirmBtn.style.display = 'inline-block';
+    } else {
+      hide($confirmBtn);
+    }
+
     // Cancel button
     modal.setAttribute('data-has-cancel-button', params.showCancelButton);
     if (params.showCancelButton) {
@@ -733,6 +743,7 @@ enyo.kind({
     text: '', // Displays bellow Title
     type: null, // "success", "info", "warning", "error"
     allowOutsideClick: false,
+    showConfirmButton: true,
     showCancelButton: false,
     closeOnConfirm: true,
     closeOnCancel: true,
@@ -790,6 +801,7 @@ enyo.kind({
       text: this.text,
       type: this.type,
       allowOutsideClick: this.allowOutsideClick,
+      showConfirmButton: this.showConfirmButton,
       showCancelButton: this.showCancelButton,
       closeOnConfirm: this.closeOnConfirm,
       closeOnCancel: this.closeOnCancel,
