@@ -6,7 +6,8 @@ enyo.kind({
   },
   published: {
     label: "",
-    showTree: false
+    showTree: false,
+    treeComponents: null
   },
   components: [
     {name: "label", tag: "label", classes: "tree-toggler nav-header"},
@@ -18,24 +19,26 @@ enyo.kind({
   ],
   initComponents: function(inSender, inEvent){
     this.inherited(arguments);
-    if (this.label) {
+    if(this.label) {
       this.$.label.setContent(this.label);
     }
-    if (this.treeComponents){
+    if(this.treeComponents) {
       this.$.nav.createComponents(this.treeComponents);
+    }
+    if(this.showTree) {
+      this.showTreeChanged();
     }
   },
   treeTap: function(inSender, inEvent) {
-    var $this = inEvent.originator;
+    var org = inEvent.originator;
 
-    if($this.hasClass("tree-toggler")){
-      if($this.parent.$.nav.showing){
-        $this.parent.$.nav.hide();
-      } else {
-        $this.parent.$.nav.show();
-      }
+    if(org.hasClass("tree-toggler")) {
+      this.setShowTree(!this.showTree);
     }
 
     return true;
+  },
+  showTreeChanged: function() {
+    this.addRemoveClass('open', this.showTree);
   }
 });
