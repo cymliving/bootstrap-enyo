@@ -40,10 +40,21 @@ enyo.kind({
 enyo.kind({
 	name: "bootstrap.TextInput",
   kind: "enyo.Input",
-	classes: "form-control",
-  create: function(){
-    this.inherited(arguments);
-  }
+	classes: "form-control"
+});
+
+enyo.kind({
+	name: "bootstrap.DateInput",
+  kind: "enyo.Input",
+  type: "date",
+	classes: "form-control"
+});
+
+enyo.kind({
+	name: "bootstrap.NumberInput",
+  kind: "enyo.Input",
+  type: "number",
+	classes: "form-control"
 });
 
 enyo.kind({
@@ -51,7 +62,9 @@ enyo.kind({
   kind: "enyo.Select",
 	classes: "form-control",
   published: {
-    active: ''
+    active: '',
+    disabled: false,
+    attributes : {disabled: false}
   },
   handlers: {
     onchange: 'updateActive'
@@ -70,8 +83,19 @@ enyo.kind({
       return selected;
     }}
   ],
+  create: function() {
+    this.inherited(arguments);
+    this.disabledChanged();
+  },
   updateActive: function() {
     this.set('active', this.getValue());
+  },
+  disabledChanged: function() {
+    if(this.disabled) {
+      this.setAttribute("disabled", true);
+    } else {
+      this.setAttribute("disabled", false);
+    }
   },
   getOptions: function() {
     var options = [];

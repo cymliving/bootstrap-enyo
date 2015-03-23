@@ -21,6 +21,7 @@ enyo.depends(
 	'Tooltip.js',
 	'Tables.js',
 	'Well.js',
+  'Panel.js',
   'Label.js',
   'ProgressBars.js',
   'Collapse.js',
