@@ -16,7 +16,14 @@ enyo.kind({
 	},
 	setupClasses: function(){
 		if(this.type){
-		   this.addClass("label-" + this.type);
+      this.originalClasses = this.classes;      
+		  this.addClass("label-" + this.type);
 		}
-	}  
+	},
+  typeChanged: function() {
+    if(this.type) {
+      this.classes = this.originalClasses;
+		  this.addClass("label-" + this.type);
+    }
+  }
 });

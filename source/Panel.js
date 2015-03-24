@@ -3,12 +3,12 @@ enyo.kind({
   classes: "panel",
   published: {
     type: "default", //default || primary || success || info || warning || danger
-    heading: null,
+    heading: [],
     body: []
   },
   tools: function() {
     return [
-      {classes: "panel-heading", content: this.heading},
+      {classes: "panel-heading", components: this.heading},
       {classes: "panel-body", components: this.body}
     ];
   },

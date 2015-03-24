@@ -133,6 +133,7 @@ enyo.kind({
 	name: "bootstrap.ModalTitle",
 	tag: "h4",
 	classes: 'modal-title',
+  allowHtml: true
 });
 
 enyo.kind({

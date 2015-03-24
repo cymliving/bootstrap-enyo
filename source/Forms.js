@@ -40,7 +40,16 @@ enyo.kind({
 enyo.kind({
 	name: "bootstrap.TextInput",
   kind: "enyo.Input",
-	classes: "form-control"
+	classes: "form-control",
+  published: {
+    placeholder: null
+  },
+  create: function() {
+    this.inherited(arguments);
+    if (this.placeholder) {
+      this.attributes.placeholder = this.placeholder;
+    }
+  }
 });
 
 enyo.kind({
@@ -99,7 +108,7 @@ enyo.kind({
   },
   getOptions: function() {
     var options = [];
-    
+
     function pushOptions(children){
       enyo.forEach(children, function(child) {
         if(child.kind == "enyo.Option"){
@@ -111,7 +120,7 @@ enyo.kind({
     }
 
     pushOptions(this.children);
-    
+
     return options;
   }
 });
@@ -119,8 +128,17 @@ enyo.kind({
 enyo.kind({
 	name: "bootstrap.TextArea",
   kind: "enyo.TextArea",
-	classes: "form-control"
-})
+	classes: "form-control",
+  published: {
+    placeholder: null
+  },
+  create: function() {
+    this.inherited(arguments);
+    if (this.placeholder) {
+      this.attributes.placeholder = this.placeholder;
+    }
+  }
+});
 
 enyo.kind({
 	name: "bootstrap.Checkbox",
@@ -131,7 +149,7 @@ enyo.kind({
     label: null,
     //* true for inline checkboxs
     inline: false,
-	  //* Value of checkbox; true if checked    
+	  //* Value of checkbox; true if checked
     checked: false
   },
 	components: [
