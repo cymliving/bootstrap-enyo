@@ -17,7 +17,8 @@ enyo.kind({
     {name: "alertMessage", tag: 'span'}
   ],
   bindings: [
-    {from: ".content", to: ".$.alertMessage.content"}
+    {from: ".content", to: ".$.alertMessage.content"},
+    {from: ".allowHtml", to: ".$.alertMessage.allowHtml"}
   ],
 	// ...........................
 	// PROTECTED METHODS
