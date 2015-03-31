@@ -1,3 +1,6 @@
+// Activate the submit event
+enyo.dispatcher.listen(document, "submit");
+
 enyo.kind({
 	name: "bootstrap.Form",
 	tag: "form",
