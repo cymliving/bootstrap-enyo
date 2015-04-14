@@ -6,6 +6,7 @@ enyo.kind({
   published: {
     type: "info",  // info || warning || danger || success
     dismissable: false,
+    autoHide: true,
     displayTime: 5,
     position: "top",
     content: ""
@@ -27,7 +28,8 @@ enyo.kind({
     this.setupClasses();
 		if(this.dismissable){
 			this.createComponent({kind:"bootstrap.AlertCloseIcon", addBefore: null});
-		} else {
+		}
+    if(this.autoHide){
       var that = this;
       setTimeout(function() { that.dismissAlert(); } , that.displayTime * 1000);
     }
