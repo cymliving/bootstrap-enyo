@@ -105,11 +105,22 @@ enyo.kind({
 	mixins: [
 		"bootstrap.Dropdown"
 	],
+	published: {
+		text: ""
+	},
 	components: [
 		{ kind: "bootstrap.DropdownMenuToggleLink", name: "link" },
 	],
+	create: function() {
+		this.inherited(arguments);
+		this.disabledChanged();
+		this.textChanged();
+	},
 	setupLink: function(){
-		this.$.link.$.text.content = this.text + " ";
+		this.$.link.$.text.setContent(this.text + " ");
+	},
+	textChanged: function(){
+    this.setupLink();
 	}
 });
 

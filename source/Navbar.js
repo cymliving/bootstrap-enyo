@@ -113,6 +113,7 @@ enyo.kind({
 
 enyo.kind({
 	name: "bootstrap.NavbarBrand",
+  allowHtml: true,
 	classes: "navbar-brand",
 	tag: "a",
 	href: "/",
