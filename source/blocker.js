@@ -1,17 +1,20 @@
 enyo.kind({
   name: 'bootstrap.Blocker',
-  classes: 'onyx-scrim enyo-fit onyx-scrim-translucent spinner-wrapper',
+  kind: 'FittableRows',
+  classes: "enyo-fit",
   published: {
     title: null,
     message: null
   },
   components: [
-    { classes: "spinner-container", components: [
-      {classes: "spinner-holder", components: [
-        { classes: 'fa fa-spinner fa-spin spinner' },
-        { name: "title", tag: "h2", classes: "spinner-title"},
-        { tag: "h2", classes: "spinner-message", components: [
-          { name: "message", tag: "small"}
+    { classes: 'onyx-scrim enyo-fit onyx-scrim-translucent spinner-wrapper', components: [
+      { classes: "spinner-container", components: [
+        {classes: "spinner-holder", components: [
+          { classes: 'fa fa-spinner fa-spin spinner' },
+          { name: "title", tag: "h2", classes: "spinner-title"},
+          { tag: "h2", classes: "spinner-message", components: [
+            { name: "message", tag: "small"}
+          ]}
         ]}
       ]}
     ]}
