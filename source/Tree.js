@@ -7,10 +7,12 @@ enyo.kind({
   published: {
     label: "",
     showTree: false,
-    treeComponents: null
+    treeComponents: null,
+    treeIcon: null
   },
   components: [
-    {name: "label", tag: "label", classes: "tree-toggler nav-header"},
+    // {name: "icon", tag: "span", showing: false, classes: "fa"},
+    {name: "label", allowHtml: true, tag: "label", classes: "tree-toggler nav-header"},
     {kind: "bootstrap.Nav", type: "list", classes: "tree", defaultKind: "bootstrap.MenuItem"}
   ],
   bindings: [
@@ -19,9 +21,12 @@ enyo.kind({
   ],
   initComponents: function(inSender, inEvent){
     this.inherited(arguments);
-    if(this.label) {
+    if(this.treeIcon && this.label) {
+      this.addIconLabel();
+    } else if(this.label) {
       this.$.label.setContent(this.label);
     }
+
     if(this.treeComponents) {
       this.$.nav.createComponents(this.treeComponents);
     }
@@ -40,5 +45,10 @@ enyo.kind({
   },
   showTreeChanged: function() {
     this.addRemoveClass('open', this.showTree);
+  },
+  addIconLabel: function() {
+    this.$.label.setContent(
+      "<span class='fa " + this.treeIcon + "'></span>" + this.label
+    );
   }
 });

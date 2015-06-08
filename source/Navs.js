@@ -1,7 +1,7 @@
 enyo.kind({
 	name: "bootstrap.Nav",
 	classes: "nav",
-	tag: 'ul', 
+	tag: 'ul',
 	published: {
 		type: 'tabs', // or pills
 		justified: false,
@@ -39,10 +39,11 @@ enyo.kind({
 		active: false,
 		text: "",
 		href: "javascript:;",
+    icon: null
 	},
 	components: [
 		{ kind: "bootstrap.MenuLink", name: 'link' },
-	],  
+	],
 	create: function() {
 		this.inherited(arguments);
 		this.setupLink();
@@ -56,7 +57,13 @@ enyo.kind({
 		this.addRemoveClass('active', this.active);
 	},
 	setupLink: function(){
-		this.$.link.setContent(this.text);
+    if(this.icon) {
+		  this.$.link.setContent(
+        "<span class='fa " + this.icon + "'></span>" + this.text
+      );
+    } else {
+		  this.$.link.setContent(this.text);
+    }
 		this.$.link.setAttribute("href", this.href);
 	},
   changeActiveTab: function(inSender, inEvent){
@@ -72,6 +79,7 @@ enyo.kind({
 enyo.kind({
 	name: "bootstrap.MenuLink",
 	tag: 'a',
+  allowHtml: true,
 	attributes: {
 		href: 'javascript:;',
 	},
