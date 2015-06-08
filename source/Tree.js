@@ -6,21 +6,22 @@ enyo.kind({
   },
   published: {
     label: "",
-    showTree: false,
+    opened: false,
     treeComponents: null,
     treeIcon: null
   },
   components: [
-    // {name: "icon", tag: "span", showing: false, classes: "fa"},
-    {name: "label", allowHtml: true, tag: "label", classes: "tree-toggler nav-header"},
-    {kind: "bootstrap.Nav", type: "list", classes: "tree", defaultKind: "bootstrap.MenuItem"}
+    {name: "label", allowHtml: true, tag: "label", classes: "tree-toggler nav-header", attributes: { "data-toggle": "collapse", "data-target": "", "aria-expanded": "false", "aria-controls": ""}},
+    {kind: "bootstrap.Nav", type: "list", classes: "tree collapse", defaultKind: "bootstrap.MenuItem"}
   ],
   bindings: [
-    {from: ".label", to: ".$.lable.content"},
-    {from: ".showTree", to: ".$.nav.showing"}
+    {from: ".label", to: ".$.lable.content"}
   ],
   initComponents: function(inSender, inEvent){
     this.inherited(arguments);
+    this.$.label.setAttribute("data-target", "#" + this.$.nav.get('id'));
+    this.$.label.setAttribute("aria-controls", this.$.nav.get('id'));
+    this.$.label.render();
     if(this.treeIcon && this.label) {
       this.addIconLabel();
     } else if(this.label) {
@@ -30,21 +31,17 @@ enyo.kind({
     if(this.treeComponents) {
       this.$.nav.createComponents(this.treeComponents);
     }
-    if(this.showTree) {
-      this.showTreeChanged();
-    }
   },
   treeTap: function(inSender, inEvent) {
     var org = inEvent.originator;
 
     if(org.hasClass("tree-toggler")) {
-      this.setShowTree(!this.showTree);
+      this.setOpened(!this.opened);
+      this.$.nav.addRemoveClass("in", this.opened);
+      //TODO: Add css to support "in" sliding transition.
     }
 
     return true;
-  },
-  showTreeChanged: function() {
-    this.addRemoveClass('open', this.showTree);
   },
   addIconLabel: function() {
     this.$.label.setContent(
