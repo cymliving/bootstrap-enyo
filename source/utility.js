@@ -150,7 +150,6 @@ bootstrap.TipPositioner = {
 			}
 
 			var newBounds = this.getCalculatedBounds(targetBounds, elementBounds);
-
 			this.applyPlacement(newBounds);
 		}
 	},
@@ -164,7 +163,7 @@ bootstrap.TipPositioner = {
 		// Calculate the new bounds
 		return this.placement == 'bottom' ? { top: targetBounds.top + targetBounds.height,                                left: targetBounds.left + targetBounds.width / 2 - elementBounds.width / 2 } :
 			   this.placement == 'top'    ? { top: targetBounds.top - elementBounds.height,                               left: targetBounds.left + targetBounds.width / 2 - elementBounds.width / 2 } :
-			   this.placement == 'left'   ? { top: targetBounds.top + targetBounds.height / 2 - elementBounds.height / 2, left: targetBounds.left - targetBounds.width } :
+			   this.placement == 'left'   ? { top: targetBounds.top + targetBounds.height / 2 - elementBounds.height / 2, left: targetBounds.left - elementBounds.width } :
 			/* this.placement == 'right' */ { top: targetBounds.top + targetBounds.height / 2 - elementBounds.height / 2, left: targetBounds.left + targetBounds.width };
 	},
 	hide: function() {
