@@ -47,6 +47,7 @@ enyo.kind({
     var $this = this;
     if($this.active) {
 		  $this.addRemoveClass('active', $this.active);
+      $this.waterfall('tabShown');
       setTimeout(function(){
         $this.addRemoveClass('in', $this.active);
       },150);
