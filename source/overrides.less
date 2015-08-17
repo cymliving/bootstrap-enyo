@@ -58,15 +58,33 @@
   @caret-size: ceil(@caret-width-base * 1.2);
   @label-padding: 15px;
 
-  border-bottom: 1px solid #e5e5e5;
+  &.active {
+    > a, > a:hover, > a:focus {
+      background: #242424;
+      color: #fff;
 
-  > a {
-    padding: 15px;
+      > .fa {
+        color: #9c3
+      }
+    }
+  }
+
+  > a, > label {
+    color: #BDBDBD;
+
+    &:hover {
+      background: #242424;
+      color: #fff;
+    }
+
     > .fa {
-      color: @gray;
       width: 2em;
       text-align: center;
     }
+  }
+
+  > a {
+    padding: 15px;
   }
 
   > label {
@@ -75,32 +93,21 @@
     width: 100%;
     padding: @label-padding;
     margin: 0px;
-    
-    color: @link-color;
+
     font-weight: normal;
-    
-    &:hover {
-      background: @nav-link-hover-bg;
-      color: @link-hover-color;
-    }
 
     &:after {
       position: absolute;
-      
+
       top: 50%;
       right: @label-padding;
-      
+
       content: "";
       display: inline-block;
       height: 0; width: 0;
 
       border: @caret-size solid transparent;
       border-top-color: inherit;
-    }
-    > .fa {
-      color: @gray;
-      width: 2em;
-      text-align: center;
     }
   }
   .nav.tree.nav-list {
