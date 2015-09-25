@@ -15,7 +15,10 @@ enyo.kind({
     {kind: "bootstrap.Nav", type: "list", classes: "tree collapse", defaultKind: "bootstrap.MenuItem"}
   ],
   bindings: [
-    {from: ".label", to: ".$.lable.content"}
+    {from: ".label", to: ".$.lable.content"},
+    {from: ".opened", to: ".$.nav", transform: function(opened) {
+      this.$.nav.addRemoveClass("in", opened);
+    }}
   ],
   initComponents: function(inSender, inEvent){
     this.inherited(arguments);
