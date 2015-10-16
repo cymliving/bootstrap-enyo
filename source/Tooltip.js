@@ -15,7 +15,17 @@ bootstrap.TooltipTrigger = enyo.mixin({
 			});
 			this.tip.render();
 		}
-	}
+	},
+  tooltipContentChanged: function() {
+    this.tip.set('content', this.tooltipContent);
+    this.tip.applyContent();
+  },
+  tooltipDelayChanged: function() {
+    this.tip.set('delay', this.tooltipDelay);
+  },
+  tooltipPlacementChanged: function() {
+    this.tip.set('placement', this.tooltipPlacement);
+  }
 }, bootstrap.TipTrigger);
 
 enyo.kind({
