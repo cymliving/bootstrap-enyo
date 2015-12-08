@@ -54,7 +54,7 @@ enyo.kind({
 	name: "bootstrap.TooltipInner",
 	classes: "tooltip-inner",
 	components: [
-		{tag: "span", name: "text"}
+		{tag: "span", name: "text", allowHtml: true}
 	]
 });
 

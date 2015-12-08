@@ -70,6 +70,13 @@ enyo.kind({
 });
 
 enyo.kind({
+	name: "bootstrap.TimeInput",
+  kind: "enyo.Input",
+  type: "time",
+	classes: "form-control"
+});
+
+enyo.kind({
 	name: "bootstrap.SelectInput",
   kind: "enyo.Select",
 	classes: "form-control",
