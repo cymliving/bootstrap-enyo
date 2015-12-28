@@ -199,27 +199,34 @@ enyo.kind({
     type: "default",// default || primary || success || info || warning || danger || link,
     size: false
   },
-  components: [
+  kindComponents: [
     { tag: "span", classes: "pull-left", name: "header"}
   ],
   bindings: [
     { from: ".content", to: ".$.header.content"}
   ],
+  controlParentName: 'header',
   create: function() {
-		this.inherited(arguments);
+    this.inherited(arguments);
     this.typeChanged();
-		this.setupClasses();
-	},
-  typeChanged: function () {
+    this.sizeChanged();
+  },
+  typeChanged: function (oldType) {
+    if(oldType) {
+      this.removeClass(oldType);
+    }
+
     if(this.type) {
-      this.removeClass(this.oldType);
       this.addClass(this.type);
     }
-    this.oldType = this.type;
   },
-	setupClasses: function(){
+  sizeChanged: function(oldSize){
+    if(oldSize) {
+      this.removeClass('col-md-' + oldSize);
+    }
+
     if(this.size) {
       this.addClass("col-md-" + this.size);
     }
-	}
+  }
 })
