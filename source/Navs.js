@@ -56,6 +56,12 @@ enyo.kind({
 	activeChanged: function(){
 		this.addRemoveClass('active', this.active);
 	},
+  textChanged: function() {
+    this.setupLink();
+  },
+  iconChanged: function() {
+    this.setupLink();
+  },
 	setupLink: function(){
     if(this.icon) {
 		  this.$.link.setContent(
