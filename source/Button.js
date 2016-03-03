@@ -33,6 +33,12 @@ enyo.kind({
 		if(this.disabled){
 			this.addClass("disabled");
 		}
+    if(this.classes) {
+      this.addClass(this.classes);
+    }
+    if(this.noCarat) {
+      this.$.carat.setShowing(false);
+    }
 	}
 });
 
@@ -127,7 +133,7 @@ enyo.kind({
 	classes: "dropdown",
 	create: function(){
 		this.inherited(arguments);
-		this.$.button.$.text.content = this.text + " ";
+		this.$.button.$.text.content = this.text ? this.text + " " : "";
 
 		enyo.mixin(this.$.button, this.btnAttributes)
 		this.$.button.setupClasses();
